@@ -10,9 +10,9 @@ public class PE
 {
     // instance variables - replace the example below with your own
     private String currentUserRole;
-    private ListOfUsers lou = new ListOfUsers();
-    private ListOfHalls loh = new ListOfHalls();
-    private ListOfBookings lob = new ListOfBookings();
+    private ListOfUsers listOfUsers = new ListOfUsers();
+    private ListOfHalls listOfHalls = new ListOfHalls();
+    private ListOfBookings listOfBooks = new ListOfBookings();
     private ListOfReviews listOfReviews = new ListOfReviews();
     private ListOfQuotations listOfQuotations = new ListOfQuotations();
     private Vector userDetails = new Vector();
@@ -50,14 +50,14 @@ public class PE
                             System.out.println("Please enter your username : ");
                             Scanner sc3 = new Scanner(System.in);
                             String username = sc3.nextLine();
-                            boolean stat = lou.checkUsername(username);
-                            System.out.println(lou.checkUsername(username));
-                            if (lou.checkUsername(username))
+                            boolean stat = listOfUsers.checkUsername(username);
+                            System.out.println(listOfUsers.checkUsername(username));
+                            if (listOfUsers.checkUsername(username))
                             {
                                 System.out.println("Please enter your password : ");
                                 
                                 String pwd = sc.nextLine();
-                                userDetails = lou.checkValidUserAndGetDetails(username, pwd);
+                                userDetails = listOfUsers.checkValidUserAndGetDetails(username, pwd);
                                 System.out.println("TEST" + userDetails.get(0));
                                 //if (userDetails.get(0))
                                 {
@@ -88,7 +88,7 @@ public class PE
         System.out.println("#-----------------------------------#");
         System.out.println("#      You are in Loign screen      #");
         System.out.println("#-----------------------------------#");
-        lou.loadUsers();
+        listOfUsers.loadUsers();
         while(!login)
         {
             Scanner sc = new Scanner(System.in);
@@ -96,7 +96,7 @@ public class PE
             String username = sc.nextLine();
             System.out.println("Enter password : ");
             String pwd = sc.nextLine();
-            userDetails = lou.checkValidUserAndGetDetails(username, pwd);
+            userDetails = listOfUsers.checkValidUserAndGetDetails(username, pwd);
             //System.out.println(userDetails.get(0).getClass().getSimpleName());
             if ((Boolean)userDetails.get(0) == true) 
             {
@@ -126,6 +126,7 @@ public class PE
             {
                 displayWelcome();
             }
+            
         }
     }
     
@@ -138,6 +139,7 @@ public class PE
         System.out.println("1. View halls");
         System.out.println("2. Manage Bookings");
         System.out.println("3. Review Booking");
+        System.out.println("4. Request Quotation");
         
         int userChoice = sc.nextInt();  
         switch(userChoice)
@@ -145,12 +147,12 @@ public class PE
             case 1 :    System.out.println("#-----------------------------------#");
                         System.out.println("#       You are in View Halls       #");
                         System.out.println("#-----------------------------------#");
-                        loh.displayAllHalls();
-                        System.out.println("There are total " + loh.getNoOfHalls() + " halls");
+                        listOfHalls.displayAllHalls();
+                        System.out.println("There are total " + listOfHalls.getNoOfHalls() + " halls");
                         System.out.println("Select any hall to request quotation ");
                         System.out.println("Enter 0 to go back");
                         int choice = sc.nextInt();
-                        while (choice < 0 || choice > loh.getNoOfHalls())
+                        while (choice < 0 || choice > listOfHalls.getNoOfHalls())
                         {
                             System.out.println("Enter valid choice " );
                             choice = sc.nextInt();
@@ -198,8 +200,35 @@ public class PE
                         }
                         break;
                         
+            case 4 :    System.out.println("#-----------------------------------#");
+                        System.out.println("#    You are in Request Quotation   #");
+                        System.out.println("#-----------------------------------#");
+                        listOfHalls.displayAllHalls();
+                        int backChoice4 = 1;
+                        while (backChoice4 != 0)
+                        {
+                            System.out.println("Enter 0 to go back");
+                            backChoice4 = sc.nextInt();
+                            if (backChoice4 == 0)
+                            {
+                                displayLoggedInUserMenu();
+                            }
+                            else 
+                            {
+                                reqQuotaion(backChoice4);
+                            }
+                            
+                        }
+                        break;
+                        
             default:    System.out.println("Invalid choice, please try again");
                         displayLoggedInUserMenu();
         }
+    }
+    
+    public void reqQuotaion(int hallNo)
+    {
+        //
+        
     }
 }

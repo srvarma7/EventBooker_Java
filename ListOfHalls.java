@@ -10,7 +10,6 @@ public class ListOfHalls
     // instance variables - replace the example below with your own
     private ArrayList<Hall> hallsList = new ArrayList<Hall>();;
     
-
     /**
      * Constructor for objects of class ListOfHalls
      */
