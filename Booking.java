@@ -16,7 +16,6 @@ public class Booking
     private double rating;
     private String ratingDesription;
     
-
     public Booking()
     {
         // initialise instance variables

@@ -9,7 +9,7 @@ import java.util.Vector;
 public class ListOfUsers
 {
     // instance variables - replace the example below with your own
-    private ArrayList<User> userList = new ArrayList<User>();
+    private ArrayList<User> userList;
     
     /**
      * Constructor for objects of class ListOfUsers
@@ -17,6 +17,7 @@ public class ListOfUsers
     public ListOfUsers()
     {
         // initialise instance variables
+        userList = new ArrayList<User>();
         loadUsers();
     }
     
@@ -25,7 +26,7 @@ public class ListOfUsers
         //addUser(String username, String pwd, String role, boolean status, boolean hasConcession)
         addUser(1, "admin","admin","Admin",true, false);
         addUser(2, "sai", "sai", "Customer", true, false);
-        System.out.println("*****Users loaded*****");
+        //System.out.println("*****Users loaded*****");
     }
     
     public int getNoOfUsers()

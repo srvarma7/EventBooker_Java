@@ -9,7 +9,7 @@ public class ListOfReviews
 {
     // instance variables - replace the example below with your own
     private int x;
-    private ArrayList<Review> reviewList = new ArrayList<Review>();
+    private ArrayList<Review> reviewList;
 
     /**
      * Constructor for objects of class ListofReviews
@@ -17,7 +17,7 @@ public class ListOfReviews
     public ListOfReviews()
     {
         // initialise instance variables
-        x = 0;
+        reviewList = new ArrayList<Review>();
     }
 
     /**

@@ -9,14 +9,17 @@ import java.util.Vector;
 public class PE
 {
     // instance variables - replace the example below with your own
+    private ListOfUsers listOfUsers;
+    private ListOfHalls listOfHalls;
+    private ListOfBookings listOfBooks;
+    private ListOfReviews listOfReviews;
+    private ListOfQuotations listOfQuotations;
+    private Vector userDetails;
     private String currentUserRole;
-    private ListOfUsers listOfUsers = new ListOfUsers();
-    private ListOfHalls listOfHalls = new ListOfHalls();
-    private ListOfBookings listOfBooks = new ListOfBookings();
-    private ListOfReviews listOfReviews = new ListOfReviews();
-    private ListOfQuotations listOfQuotations = new ListOfQuotations();
-    private Vector userDetails = new Vector();
-    boolean login = false;
+    private boolean hasConcession;
+    private int selectedHallId;
+    
+    private boolean login = false;
     
     /**
      * Constructor for objects of class PE
@@ -24,10 +27,18 @@ public class PE
     public PE()
     {
         // initialise instance variables
+        
+        listOfUsers = new ListOfUsers();
+        listOfHalls = new ListOfHalls();
+        listOfBooks = new ListOfBookings();
+        listOfReviews = new ListOfReviews();
+        listOfQuotations = new ListOfQuotations();
+        userDetails = new Vector();
+        hasConcession = false;
         //welcome();
     }
     
-    public void displayWelcome()
+    public void mainMenu()
     {
         Scanner sc = new Scanner(System.in);
         System.out.println("##############################");
@@ -46,35 +57,7 @@ public class PE
         {
             case 1 :    displayLoginMenu();
                         break;
-                            /*
-                            System.out.println("Please enter your username : ");
-                            Scanner sc3 = new Scanner(System.in);
-                            String username = sc3.nextLine();
-                            boolean stat = listOfUsers.checkUsername(username);
-                            System.out.println(listOfUsers.checkUsername(username));
-                            if (listOfUsers.checkUsername(username))
-                            {
-                                System.out.println("Please enter your password : ");
-                                
-                                String pwd = sc.nextLine();
-                                userDetails = listOfUsers.checkValidUserAndGetDetails(username, pwd);
-                                System.out.println("TEST" + userDetails.get(0));
-                                //if (userDetails.get(0))
-                                {
-                                    login = true;
-                                }
-                            }
-                            else
-                            {
-                                System.out.println("Invalid username");
-                                System.out.println("Please try again");
-                            }
-                            }
-                            break;
-                                /*
                             
-                                */
-                        
             case 2 :    displayRegisterForm();
                         break;
                         
@@ -101,6 +84,8 @@ public class PE
             if ((Boolean)userDetails.get(0) == true) 
             {
                 login = true;
+                System.out.println((Boolean)userDetails.get(3));
+                hasConcession = (Boolean)userDetails.get(3);
                 System.out.println("Welcome " + username);
                 displayLoggedInUserMenu();
             }
@@ -124,7 +109,7 @@ public class PE
             backChoice = sc.nextInt();
             if (backChoice == 0)
             {
-                displayWelcome();
+                mainMenu();
             }
             
         }
@@ -147,9 +132,10 @@ public class PE
             case 1 :    System.out.println("#-----------------------------------#");
                         System.out.println("#       You are in View Halls       #");
                         System.out.println("#-----------------------------------#");
-                        listOfHalls.displayAllHalls();
+                        listOfHalls.
+                        displayAllHalls();
                         System.out.println("There are total " + listOfHalls.getNoOfHalls() + " halls");
-                        System.out.println("Select any hall to request quotation ");
+                        //System.out.println("Select any hall to request quotation ");
                         System.out.println("Enter 0 to go back");
                         int choice = sc.nextInt();
                         while (choice < 0 || choice > listOfHalls.getNoOfHalls())
@@ -217,7 +203,6 @@ public class PE
                             {
                                 reqQuotaion(backChoice4);
                             }
-                            
                         }
                         break;
                         
@@ -226,7 +211,35 @@ public class PE
         }
     }
     
-    public void reqQuotaion(int hallNo)
+    private void reqQuotaion(int hallNo)
+    {
+        //
+        Scanner sc = new Scanner(System.in);
+        listOfHalls.displayHallById(hallNo);
+        System.out.println("Enter 1 to continue to request quotation");
+        int choice = sc.nextInt();
+        if(choice == 1)
+        {
+            //
+            System.out.println("Request quotaion process ");
+            System.out.println("Please enter number of guests ");
+            int noOfGuests = sc.nextInt();
+            System.out.println("Please enter booking date");
+            String bookingDate = sc.nextLine();
+            System.out.println("Please enter booking slot ");
+            int slot = sc.nextInt();
+            System.out.println("Please enter discount if you have any or enter 0 ");
+            double discount = sc.nextDouble();
+            
+        }
+        else
+        {
+            //
+            displayLoggedInUserMenu();
+        }
+    }
+    
+    private void prepareQuotation()
     {
         //
         
