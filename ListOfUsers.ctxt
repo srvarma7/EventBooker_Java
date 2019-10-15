@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=ListOfUsers
+comment0.text=\n\ Write\ a\ description\ of\ class\ ListOfUsers\ here.\n\n\ @author\ Chola\ Kallepalli\n\ @version\ 23/09/19\n
+comment1.params=
+comment1.target=ListOfUsers()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ListOfUsers\n
+comment10.params=item\ email\ newUserStatus\ newPwd
+comment10.target=boolean\ updateUserDetails(int,\ java.lang.String,\ boolean,\ java.lang.String)
+comment2.params=
+comment2.target=void\ loadUsers()
+comment3.params=
+comment3.target=int\ getNoOfUsers()
+comment4.params=
+comment4.target=void\ displayAllUsers()
+comment5.params=username
+comment5.target=void\ displayUserById(java.lang.String)
+comment6.params=email
+comment6.target=boolean\ checkUsername(java.lang.String)
+comment7.params=username\ pwd
+comment7.target=boolean\ validUser(java.lang.String,\ java.lang.String)
+comment8.params=username\ pwd
+comment8.target=java.util.Vector\ checkValidUserAndGetDetails(java.lang.String,\ java.lang.String)
+comment9.params=uid\ username\ pwd\ role\ status\ hasConcession
+comment9.target=void\ addUser(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ boolean,\ boolean)
+numComments=11
