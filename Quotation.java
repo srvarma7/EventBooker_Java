@@ -14,7 +14,8 @@ public class Quotation
     public int bookingId;
     
     public int noOfGuests;
-    public boolean bookingAvailability[][];
+    public boolean catering;
+    //public boolean bookingAvailability[][];
     public String bookingDate;
     public int bookingSlot;
     
@@ -22,14 +23,33 @@ public class Quotation
     public String discountCode;
     
     public double totalPrice;
-
+    
     /**
      * Constructor for objects of class Quotation
      */
     public Quotation()
     {
         // initialise instance variables
+        discountCode = "NILL";
+    }
+    
+    public void addQuotaion(int newQid, int newHallId, int newUserId, int newNoOfGuests, boolean newCatreing,
+        String newBookingDate, int newBookingSlot, boolean newquotaionStatus, String newDiscountCode, double newTotalPrice)
+    {
+        //
+        qId = newQid;
+        hallId = newHallId;
+        userId = newUserId;
+        //bookingId = 0;
+        noOfGuests = newNoOfGuests;
+        catering = newCatreing;
+        //setNewHallAvailability();
         
+        bookingDate = newBookingDate;
+        bookingSlot = newBookingSlot;
+        quotaionStatus = true;
+        discountCode = newDiscountCode;
+        totalPrice = newTotalPrice;
     }
     
     public int getQuotationId()
@@ -44,7 +64,7 @@ public class Quotation
     
     public int getHallId()
     {
-        return qId;
+        return hallId;
     }
     
     public void setHallId(int newHallId)
@@ -72,6 +92,16 @@ public class Quotation
         noOfGuests = newNoOfGuests;
     }
     
+    public boolean getCatering()
+    {
+        return catering;
+    }
+    
+    public void setCatering(boolean newCatreing)
+    {
+        catering = newCatreing;
+    }
+    
     public String getBookingDate()
     {
         return bookingDate;
@@ -84,7 +114,7 @@ public class Quotation
     
     public int getBookingSlot()
     {
-        return noOfGuests;
+        return bookingSlot;
     }
     
     public void setBookingSlot(int newBookingSlot)
@@ -121,17 +151,4 @@ public class Quotation
     {
         totalPrice = newTotalPrice;
     }
-    
-    /*
-    public boolean getBookingAvailability(int date, int slot)
-    {
-        return bookingAvailability[date][slot];
-    }
-    
-    public void setBookingAvailability(boolean bookingAvail, int date, int slot)
-    {
-        bookingAvailability[date][slot] = bookingAvail;
-    }
-    */
-    
 }

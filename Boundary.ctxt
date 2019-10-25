@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=Boundary
+comment0.text=\n\ Write\ a\ description\ of\ class\ Boundary\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Boundary()
+comment10.params=data
+comment10.target=void\ displayMessage(java.lang.String)
+comment2.params=
+comment2.target=void\ displayMainMenu()
+comment3.params=
+comment3.target=void\ displayUserLoginBanner()
+comment4.params=
+comment4.target=void\ displayRegistrationFormBanner()
+comment5.params=
+comment5.target=void\ displayHallAndQuotationBanner()
+comment6.params=
+comment6.target=void\ displayManageBookingBanner()
+comment7.params=
+comment7.target=void\ displayReviewBookingBanner()
+comment8.params=
+comment8.target=void\ displayLoggedInUserMenu()
+comment9.params=
+comment9.target=void\ displayManageBookingMenu()
+numComments=11

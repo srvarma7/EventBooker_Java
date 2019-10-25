@@ -1,21 +1,4 @@
 #BlueJ class context
 comment0.target=PE
 comment0.text=\n\ Write\ a\ description\ of\ class\ PE\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=PE()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ PE\n
-comment2.params=
-comment2.target=void\ mainMenu()
-comment3.params=choice
-comment3.target=void\ menuAction(int)
-comment4.params=
-comment4.target=void\ displayLoginMenu()
-comment5.params=
-comment5.target=void\ displayRegisterForm()
-comment6.params=
-comment6.target=void\ displayLoggedInUserMenu()
-comment7.params=hallNo
-comment7.target=void\ reqQuotaion(int)
-comment8.params=
-comment8.target=void\ prepareQuotation()
-numComments=9
+numComments=1

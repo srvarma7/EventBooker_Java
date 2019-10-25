@@ -1,3 +1,24 @@
 #BlueJ class context
 comment0.target=PrimeEvents
-numComments=1
+comment1.params=
+comment1.target=PrimeEvents()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ PE\n
+comment10.params=hallNo
+comment10.target=void\ reqQuotaion(int)
+comment2.params=
+comment2.target=void\ mainMenu()
+comment3.params=choice
+comment3.target=void\ menuAction(int)
+comment4.params=
+comment4.target=void\ userLogin()
+comment5.params=
+comment5.target=void\ displayRegisterForm()
+comment6.params=
+comment6.target=void\ loggedInUserMenu()
+comment7.params=
+comment7.target=void\ hallAndQuotaion()
+comment8.params=
+comment8.target=void\ manageBooking()
+comment9.params=
+comment9.target=void\ reviewBooking()
+numComments=11

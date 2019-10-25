@@ -10,7 +10,6 @@ public class ListOfUsers
 {
     // instance variables - replace the example below with your own
     private ArrayList<User> userList;
-    
     /**
      * Constructor for objects of class ListOfUsers
      */
@@ -23,10 +22,9 @@ public class ListOfUsers
     
     public void loadUsers()
     {
-        //addUser(String username, String pwd, String role, boolean status, boolean hasConcession)
+        //
         addUser(1, "admin","admin","Admin",true, false);
         addUser(2, "sai", "sai", "Customer", true, false);
-        //System.out.println("*****Users loaded*****");
     }
     
     public int getNoOfUsers()
@@ -40,7 +38,6 @@ public class ListOfUsers
         for (User ob : userList)
         {
             System.out.println("Email - " + ob.getUsername());
-            //System.out.println("Password - " + ob.getPwd());
             System.out.println("Role - " + ob.getRole());
             System.out.println("Account status - " + ob.getStatus());
             System.out.println("Has concession - " + ob.getHasConcession());
@@ -98,8 +95,8 @@ public class ListOfUsers
         String userRole = "not found";
         boolean accountStatus = false;
         boolean hasConcession = false;
+        int uid = 0;
         Vector list = new Vector();
-        
         for (User ob : userList)
         {
             if (ob.getUsername().equals(username) && ob.getPwd().equals(pwd))
@@ -111,6 +108,7 @@ public class ListOfUsers
                     userRole = ob.getRole();
                     accountStatus = ob.getStatus();
                     hasConcession = ob.getHasConcession();
+                    uid = ob.getUId();
                 }
             }
         }
@@ -118,6 +116,8 @@ public class ListOfUsers
         list.add(userRole);
         list.add(accountStatus);
         list.add(hasConcession);
+        list.add(uid);
+        
         return list;
     }
 

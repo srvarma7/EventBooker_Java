@@ -1,4 +1,5 @@
-
+import java.text.*;
+import java.util.*;
 /**
  * Write a description of class Hall here.
  *
@@ -15,9 +16,11 @@ public class Hall
     private int capacity;
     private int ownerId;
     private double discount;
-    private boolean availability;
-    private double price;
-    private double rating;
+    private boolean availability[][];
+    private double pricePerPerson;
+    private double avgRating;
+    private int dates = 12;
+    private int slots = 3;
     
     /**
      * Constructor for objects of class Hall
@@ -32,13 +35,13 @@ public class Hall
         capacity = 0;
         ownerId = 0;
         discount = 0.0;
-        availability = true;
-        price = 0.0;
-        rating = -1.0;
+        availability = new boolean[dates][slots];
+        pricePerPerson = 0.0;
+        avgRating = 0.0;
     }
     
     public void addHall(int newNumber, String newName, String newDescription, String newLocation, 
-        int newCapacity, int newOwnerId, double newDiscount, boolean newAvailability, Double newPrice, double newRating)
+        int newCapacity, int newOwnerId, double newDiscount, double newpricePerPerson, double newavgRating)
     {
         // initialise instance variables
         hId = newNumber;
@@ -48,9 +51,122 @@ public class Hall
         capacity = newCapacity;
         ownerId = newOwnerId;
         discount = newDiscount;
-        availability = newAvailability;
-        price = newPrice;
-        rating = newRating;
+        //making hall available for 12 days
+        setHallAvailability();
+        pricePerPerson = newpricePerPerson;
+        avgRating = newavgRating;
+    }
+    
+    public void displayHallAvailability()
+    {
+        int day = 1;
+        System.out.println("S.no " + "       Date  " + "         Morning " + "          Arvo  " + "          Evening    "); 
+        for(int date = 0; date < 12; date++)
+        {
+            if(date < 9)
+            {   
+                System.out.print("  " + (date+1) + "      "+ getDate(date) + "   ");
+            }
+            else
+            {
+                System.out.print(" " + (date+1) + "      "+ getDate(date) + "   ");
+            }
+            
+            for(int slot = 0; slot < 3; slot++)
+            {
+                if(availability[date][slot])
+                {
+                    //
+                    System.out.print( "   " + " Available " + "   ");
+                }
+                else
+                {
+                    System.out.print( "   " + "Unavailable" + "   ");
+                }
+            }
+            System.out.println("");
+        }
+    }
+    
+    public String chooseSlot(int date)
+    {
+        //
+        for(int slot = 0; slot < 3; slot++)
+        {
+            //
+            if(availability[date-1][slot])
+            {
+                if(slot==0)
+                {
+                    System.out.println("  " + (slot+1)  + "       Morning" + "     Available  ");
+                }
+                if(slot==1)
+                {
+                    System.out.println("  " + (slot+1)  + "        Arvo " + "      Available  ");
+                }
+                if(slot==2)
+                {
+                    System.out.println("  " + (slot+1)  + "       Evening" + "     Available  ");
+                }
+            }
+        }
+        return getDate(date);
+    }
+    
+    private String currentDate()
+    {
+        //
+        String dateInString =new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        return dateInString;
+    }
+    
+    /**
+     * REFERENCE FROM STACKOVERFLOW
+     */
+    public String getDate(int day)
+    {
+        //
+        String dateInString =new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar c = Calendar.getInstance();
+	try{
+	   //Setting the date to the given date
+	   c.setTime(sdf.parse(dateInString));
+	}
+	catch(ParseException e){
+		e.printStackTrace();
+	}
+	//Number of Days to add
+	c.add(Calendar.DAY_OF_MONTH, day);  
+	//Date after adding the days to the given date
+	String newDate = sdf.format(c.getTime());
+	return newDate;
+    }
+    
+    public void setHallAvailability()
+    {
+        //
+        for(int date = 0; date < 12; date++)
+        {
+            for(int slot = 0; slot < 3; slot++)
+            {
+                availability[date][slot] = true;
+            }
+            System.out.println(" ");
+            System.out.println(" ");
+        }
+    }
+    
+    public boolean getHallAvailablity(int date, int slot)
+    {
+        //
+        return availability[date][slot];
+    }
+    
+    public void setHallAvailablity(int date, int slot, boolean status)
+    {
+        //
+        availability[date][slot] = status;
     }
     
     public int getHId()
@@ -123,43 +239,28 @@ public class Hall
         discount = newDiscount;
     }
     
-    public boolean getAvailability()
+    public double getpricePerPerson()
     {
-        return availability;
-    }
-
-    public void setAvailability(boolean newAvailability)
-    {
-        availability = newAvailability;
+        return pricePerPerson;
     }
     
-    public Double getPrice()
+    public void setpricePerPerson(double newpricePerPerson)
     {
-        return price;
+        pricePerPerson = newpricePerPerson;
     }
     
-    public void setPrice(Double newPrice)
+    public double getAvgRating()
     {
-        price = newPrice;
+        return avgRating;
     }
     
-    public double getRating()
+    public void setAvgRating(double newavgRating)
     {
-        return rating;
+        avgRating = newavgRating;
     }
     
-    public void setRating(double newRating)
+    public void updateAvgRating(double newavgRating)
     {
-        rating = newRating;
-    }
-    
-    public void updateRating(double newRating)
-    {
-        rating = (rating + newRating)/2;
-    }
-    
-    public void resetRating()
-    {
-        rating = -1;
+        avgRating = (newavgRating + avgRating)/2;
     }
 }
